@@ -1,0 +1,142 @@
+{
+  "cross_split_trace_pairs": {
+    "dev-test": {
+      "exact_trace_pairs": 1,
+      "near_trace_pairs": 0
+    },
+    "train-dev": {
+      "exact_trace_pairs": 2,
+      "near_trace_pairs": 0
+    },
+    "train-test": {
+      "exact_trace_pairs": 4,
+      "near_trace_pairs": 2
+    }
+  },
+  "integrity": {
+    "blocking_integrity_findings": false,
+    "cross_split_intersections": {
+      "dev-test": {
+        "conversation_ids": 0,
+        "normalized_context_target_pairs": 2,
+        "utterance_ids": 0
+      },
+      "train-dev": {
+        "conversation_ids": 0,
+        "normalized_context_target_pairs": 6,
+        "utterance_ids": 0
+      },
+      "train-test": {
+        "conversation_ids": 0,
+        "normalized_context_target_pairs": 18,
+        "utterance_ids": 0
+      }
+    },
+    "pending_checks": [
+      "classify_exact_text_overlap_and_target_repetition",
+      "parse_context_roles_turns_and_detect_post_target_leakage",
+      "fuzzy_conversation_overlap",
+      "prior_holdout_exposure"
+    ],
+    "source_revision": "ed96c1c15818b2a2663192b4ac9655ae5e915d05",
+    "splits": {
+      "dev": {
+        "blank_context_by_turn": {
+          "1": 167
+        },
+        "blank_context_rows": 167,
+        "conversations": 423,
+        "count_mismatch": false,
+        "duplicate_rows": 0,
+        "duplicate_utterance_ids": 0,
+        "empty_target_rows": 0,
+        "exact_target_context_rows": 0,
+        "harmful_rows": 425,
+        "invalid_label_rows": 0,
+        "invalid_metadata_rows": 0,
+        "normalized_target_substring_rows": 3,
+        "rows": 1403,
+        "safe_rows": 978,
+        "source_sha256": "819e75702bb3bc514f263899ff43a824c1f1f264a1f884196d6730d6deef19e3",
+        "unresolved_agreement_rows": 0
+      },
+      "test": {
+        "blank_context_by_turn": {
+          "1": 176
+        },
+        "blank_context_rows": 176,
+        "conversations": 420,
+        "count_mismatch": false,
+        "duplicate_rows": 0,
+        "duplicate_utterance_ids": 0,
+        "empty_target_rows": 0,
+        "exact_target_context_rows": 0,
+        "harmful_rows": 420,
+        "invalid_label_rows": 0,
+        "invalid_metadata_rows": 0,
+        "normalized_target_substring_rows": 6,
+        "rows": 1391,
+        "safe_rows": 971,
+        "source_sha256": "1d24148c00a768e9dea325d0bfe267fda6d146c925eeaa9f88ed3268f9f80310",
+        "unresolved_agreement_rows": 0
+      },
+      "train": {
+        "blank_context_by_turn": {
+          "1": 538
+        },
+        "blank_context_rows": 538,
+        "conversations": 1268,
+        "count_mismatch": false,
+        "duplicate_rows": 0,
+        "duplicate_utterance_ids": 0,
+        "empty_target_rows": 0,
+        "exact_target_context_rows": 0,
+        "harmful_rows": 1278,
+        "invalid_label_rows": 0,
+        "invalid_metadata_rows": 0,
+        "normalized_target_substring_rows": 19,
+        "rows": 4222,
+        "safe_rows": 2944,
+        "source_sha256": "9513b9ee9b7d2d2071e7e5ca22384f8abc37b761f08a961606d74a6056d16196",
+        "unresolved_agreement_rows": 0
+      }
+    }
+  },
+  "jaccard_threshold": 0.8,
+  "minimum_shingles": 5,
+  "prefix_checks": {
+    "dev": {
+      "exact_target_at_earlier_ai_turn": 2,
+      "exact_target_at_earlier_user_turn": 0,
+      "invalid_prefix_rows": 0,
+      "invalid_target_role_rows": 0,
+      "prefix_consistency_mismatches": 0,
+      "prefix_length_mismatches": 0,
+      "reconstructed_conversations": 423
+    },
+    "test": {
+      "exact_target_at_earlier_ai_turn": 6,
+      "exact_target_at_earlier_user_turn": 0,
+      "invalid_prefix_rows": 0,
+      "invalid_target_role_rows": 0,
+      "prefix_consistency_mismatches": 0,
+      "prefix_length_mismatches": 0,
+      "reconstructed_conversations": 420
+    },
+    "train": {
+      "exact_target_at_earlier_ai_turn": 17,
+      "exact_target_at_earlier_user_turn": 4,
+      "invalid_prefix_rows": 0,
+      "invalid_target_role_rows": 0,
+      "prefix_consistency_mismatches": 0,
+      "prefix_length_mismatches": 0,
+      "reconstructed_conversations": 1268
+    }
+  },
+  "proposed_excluded_conversations": {
+    "dev": 3,
+    "test": 8,
+    "train": 9
+  },
+  "source_revision": "ed96c1c15818b2a2663192b4ac9655ae5e915d05"
+}

@@ -1,0 +1,24 @@
+{
+  "source_split": "dev",
+  "seed": 42,
+  "source_selection_frame_conversations": 367,
+  "selected_by_sample": {
+    "probability": 25,
+    "enriched": 25
+  },
+  "unique_source_conversations": 50,
+  "edit_slots": 100,
+  "constructed_edits": 0,
+  "human_ratings": 0,
+  "eligibility": "at least two preceding turns, at least one user turn; manual boundary screening pending",
+  "provenance": {
+    "source_revision": "ed96c1c15818b2a2663192b4ac9655ae5e915d05",
+    "split_sha256": {
+      "train": "9513b9ee9b7d2d2071e7e5ca22384f8abc37b761f08a961606d74a6056d16196",
+      "dev": "819e75702bb3bc514f263899ff43a824c1f1f264a1f884196d6730d6deef19e3"
+    },
+    "exclusions_sha256": "6911d56ada818bc48eb0fba8adfe73855b85d6e367d914660b614901258fb2a4"
+  },
+  "development_audit_run_id": "context-audit-dev-20261112T182454915099Z",
+  "queue_sha256": "0203ef7ba6f1b278ed79197fb54dde224ed034255139b814a42a0c1565f08b4b"
+}

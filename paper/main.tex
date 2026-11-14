@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{When Does Context Justify Harm?\\
+\large A Study Protocol and Development Audit for AI Companion Safety Detection}
+\author{Anonymous}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A companion's reply can cross an explicit user boundary in one conversation history and respect it in another. We propose a paired evaluation that holds the reply fixed and changes the earlier evidence or a matched distractor. Independent reviewers would judge each version from the prefix available to detectors. We audited 7,016 CompanionHarm replies across 2,111 conversation IDs. The official splits shared no conversation IDs, but train and test contained four exact and two near-matching conversation traces. In an exploratory development analysis after filtering these and other flagged matches, lexical classifiers attained macro-F1 of 0.610 with the reply alone and 0.614 with the full prefix. The paired difference was 0.004 with a conversation-clustered 95\% interval of $[-0.030,0.038]$. Altered inputs also changed predictions, motivating direct human validation of the expected label relation. The human pilot and confirmatory paired evaluation are pending.
+\end{abstract}
+
+\section{Introduction}
+
+Consider a companion that uses a familiar form of address after the user has withdrawn permission to use it. The reply alone may look innocuous. A detector must identify the action in the reply, find the restriction that applies to it, and distinguish that restriction from a newer preference about a different action. We ask whether detectors change their judgment when this evidence changes and keep their judgment stable when a comparable edit changes an unrelated preference.
+
+Our contribution at this stage is a scoped evaluation protocol and a local audit of the source data. The audit tests whether the release provides consistent conversation prefixes and whether distinct identifiers are sufficient to keep repeated content out of different splits. The proposed evaluation tests the relation between a reply and an explicit user instruction. It cannot measure the effect of the reply on the user's well-being.
+
+\section{Related Work}
+
+CompanionHarm provides turn-level annotation of real-world AI companion interactions and compares detectors that receive an isolated reply with detectors that receive a conversational prefix \cite{companionharm2026}. CompanionSafe evaluates companion behavior and uses turn-level supervision for detection \cite{companionsafe2026}. Guo et al.\ study permission and scope in companion memory by comparing replies generated under different guidance \cite{guo2026memory}.
+
+The paired design builds on established counterfactual and contextual evaluation methods. DiaSafety and context-sensitivity estimation studies obtain judgments with and without context \cite{sun2022safety,xenos2021context}. No Convo! studies prediction instability under context exposure and linguistic variation \cite{rajesh2026noconvo}. COBRA Frames tests judgments of a fixed statement under different social contexts \cite{zhou2023cobra}. ConCI evaluates label-preserving and label-changing information flows and uses joint correctness as a pair-level measure \cite{conci2026}. MTAG-Bench holds assistant turns fixed during static evidence deletion and compares deletions with matched controls \cite{subramanian2026mtag}. Choi and Kwon evaluate safety behavior under contextual changes that reverse a normative decision \cite{choi2026flips}. The specific question here is whether earlier, scoped user instructions determine the label of a fixed companion reply, including when a more recent instruction applies to a different action.
+
+\section{Source Data and Split Audit}
+
+We acquired the official train, development, and test CSVs from the CompanionHarm revision recorded in the source manifest.\footnote{\href{https://github.com/HanMeng2004/CompanionHarm/tree/ed96c1c15818b2a2663192b4ac9655ae5e915d05}{Pinned CompanionHarm repository}.} The local auditor verified file size and Git blob identity before parsing and computed SHA-256 checksums. It checked schema, label vocabulary, vote metadata, duplicate IDs, duplicate rows, and consistency between the declared split and the input file. Access to the test split for this step was limited to programmatic integrity checks and aggregate outputs.
+
+We parsed the prefix using the line-initial \texttt{User:} and \texttt{Replika:} markers. For each conversation ID, we compared shorter observed prefixes and their focal turns with the longest observed sequence. The parser removed the serialized speaker marker when comparing the reply's body with earlier turn bodies. For text comparisons we normalized Unicode to NFC and collapsed whitespace, retaining role and turn boundaries. Each trace ends at the last annotated reply visible in the release.
+
+We searched for exact normalized context--reply pairs and exact conversation traces across splits. We also compared sets of consecutive case-folded word trigrams, including role markers, with a Jaccard threshold of 0.80 and at least five distinct trigrams on each side. This screen flags candidates for review. It can miss paraphrases and duplicates that appear only in partial traces.
+
+\input{audit_tables}
+
+The release had no cross-split conversation or utterance ID intersection, no duplicate rows within a split, and no invalid label or unresolved vote records under the documented schema. All prefixes parsed and matched their recorded positions and longer observed traces. We observed exact repetitions of a focal reply body within earlier assistant turns in 17 train, two development, and six test rows. Four train rows also had an exact earlier user-turn match. These repetitions occurred at earlier serialized positions. We retain them as flags because turn position alone cannot establish why the text recurred.
+
+Exact and near-match trace counts refer to pairs of distinct release IDs. The cross-split matches prevent treating ID disjointness as evidence of text independence. We exclude every conversation linked to a match under these checks from derived cohorts, covering nine train, three development, and eight test IDs. An in-memory check confirmed that these exclusions remove the detected matches. The project owner reported no prior use of the official test split. The split remains sealed for model scoring until the confirmatory design is locked.
+
+\section{Experiment A: Development Context Diagnostics}
+
+We fit two balanced logistic regressions with word unigram and bigram TF-IDF features. One receives the focal reply, and one receives the chronological role-marked prefix and focal reply. Both use the same 4,185 filtered train replies. We use the original binary harm mapping and a fixed decision threshold of 0.5. We evaluate the two fits on 1,393 filtered development replies from 420 conversations. We also hold the full model fixed and vary the prefix. We compare each changed prediction with its full-prefix counterpart, using 2,000 shared bootstrap samples of originating conversations for uncertainty.
+
+\input{development_tables}
+
+The full-prefix fit had higher point estimates for harmful recall and safe false-positive rate. All three paired intervals for the difference between models span zero. Probe denominators include unchanged renderings, such as short prefixes under the last-three condition. The table reports how often the rendered input changed. The mismatched condition uses a fixed, potentially reused donor from another development conversation and matches whitespace word count by truncation. Its interval conditions on that construction. The altered inputs have no human-validated gold relations. Their reported flips measure sensitivity under the chosen constructions. The broad source labels can reflect information beyond the prefix shown to either detector.
+
+\section{Experiment B: Proposed Human-Validated Pairs}
+
+\paragraph{Task.} The detector receives a role-marked prefix and a marked focal AI reply. A boundary violation occurs when that reply performs an action covered by a currently applicable, explicit user restriction. A no-violation judgment requires evidence that the reply respects the restriction or that the user explicitly permitted the action in the relevant scope. Reviewers can mark the judgment undetermined if the action, scope, permission, or timing is ambiguous. CompanionHarm's original annotation uses a broader harm taxonomy and a different annotation window \cite{companionharm2026}. We would obtain a new judgment on the original condition as well as on each edit.
+
+\paragraph{Candidate construction.} Start with explicit preferences about forms of address and topics of conversation. From eligible development conversations, retain the original prefix and attempt two minimal edits. One changes the restriction or permission applicable to the focal action. The other changes a comparably phrased instruction for an unrelated action. Match speaker, turn position, edit operation, and length where feasible. Keep the focal reply byte-identical. Attempt changes in both directions. The wider feasibility plan covers fictional framing, consent and boundaries, relevant vulnerability, emotional distractors, and evidence distance. Each family has an edit specification. A separate broad focal-harm rubric supports exploration beyond explicit boundaries.
+
+\paragraph{Pilot and review.} We prepared a private screening queue of 50 development replies from distinct conversations, split evenly between probability sampling and an enriched sample. Up to two edits per reply would yield 150 conditions and up to 450 initial ratings. A separately assigned reply-only diagnostic can test label dependence on the visible prefix. Reviewers would receive randomized assignments and see at most one condition per conversation. Each reviewer records the label, confidence, supporting turns, and coherence. Single-condition judgments would lock before adjudication and pair-level scope and coherence checks. We would report attempted edits, accepted edits, disagreement, exclusions, and direction balance. Expansion toward 300 sources and 600 edits depends on pilot yield and attainable precision. Screening, candidate authoring and human ratings remain pending.
+
+\paragraph{Detectors and controls.} The candidate comparison uses a compact sequence model and a supervised lexical classifier with role and recency features. Both receive the same visible prefix and reply. They would share training and validation partitions and use boundary judgments collected under the new rubric. The pilot must establish that sufficient supervision can be obtained for this comparison. Before evaluation we would check that the rendered inputs retain the required evidence. A target-only detector, a context-only detector, and a recent-instruction rule would help diagnose shortcut use. The deterministic target-only detector has identical inputs on both arms and therefore has zero joint accuracy whenever the gold labels differ.
+
+\paragraph{Estimands.} On human-validated change pairs, correct contextual adaptation is the fraction of pairs with both labels predicted correctly. The primary model comparison is the difference in this rate on common eligible pairs. On validated preserving pairs, we would report the prediction flip rate together with joint correctness. An empty eligible set yields an undefined rate. The analysis would resample originating conversations, keeping all edits and both models' predictions together. We would report denominators, label directions, attrition, coverage, and confidence intervals. We would set practical thresholds and any correction for multiple primary comparisons before confirmatory scoring.
+
+\section{Conditional Routing and External Evaluation}
+
+If the paired study establishes reproducible contextual failures, a routing experiment would compare keeping the reply-only judgment, acquiring context, and asking a human to review. Earlier risk-detection work already evaluates classifier--judge cascades \cite{akpinar2026risk}. The proposed policy comparison would use common cost budgets that include initial inference, context acquisition and inference, review, and routing overhead. It would report observed reviewer performance where available and explicitly model reviewer error in simulations.
+
+AICompanionBench labels conversations, and its annotator used model outputs during label revision \cite{ren2026aicompanionbench}. CompanionSafe already reports external evaluation on both corpora \cite{companionsafe2026}. Any follow-up transfer study needs separate data rights, duplicate checks, and a locked mapping at the conversation level. Its outcomes would address a different evaluation unit. External scoring and routing remain conditional.
+
+\section{Limitations, Ethics, and Reproducibility}
+
+The source contains selected Replika exchanges and represents only the dialogue captured in the release. A consistently serialized prefix can still omit events outside that record. Text similarity flags require interpretation and the audit provides no evidence about prior model exposure. The proposed edits narrow the construct to explicit boundaries and could change naturalness or surface cues. Matching, blinded judgment, and reporting rejected edits are necessary to interpret detector differences.
+
+The project owner confirmed local research use. The raw conversations remain in restricted local storage. The audit exports aggregate counts and release checksums. Human review requires an approved access and annotator safety plan. Public paper examples would be independently authored. The repository records the pinned data, audit scripts, commands, and results. Model and annotation artifacts would be recorded under the frozen protocol.
+
+\section{Conclusion}
+
+CompanionHarm's release is disjoint by conversation ID and contains measurable text overlap between splits. On filtered development data, the lexical models show a small and uncertain difference in macro-F1, while the fixed full-prefix model changes predictions under multiple context probes. Independent judgments of original and edited contexts are needed to determine which changes a detector should make.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

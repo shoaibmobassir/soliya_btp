@@ -1,0 +1,19 @@
+{
+  "total_sources": 50,
+  "counts": {
+    "screened": 0,
+    "eligible": 0,
+    "ineligible": 0,
+    "pending": 50,
+    "invalid": 0,
+    "constructed_edits": 0,
+    "rejected_edits": 0,
+    "impossible_edits": 0
+  },
+  "author_decisions": {},
+  "rejection_and_impossibility_reasons": {},
+  "screening_complete": false,
+  "independent_review_plan_approved": false,
+  "independent_human_evidence": "not_available",
+  "go_no_go": "pending_independent_human_validation"
+}

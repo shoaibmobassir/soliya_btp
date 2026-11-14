@@ -1,0 +1,11 @@
+/private_data/
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+/pilot_review_preview/.openai/
+/pilot_review_preview/dist/
+/pilot_review_preview/.wrangler/
+.DS_Store

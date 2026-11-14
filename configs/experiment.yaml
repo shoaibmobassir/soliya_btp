@@ -1,0 +1,41 @@
+project: contextevidencebench
+protocol_version: "0.1-draft"
+seed: 42
+input:
+  companionharm_root: null  # populate after rights audit
+  aicompanionbench_root: null # optional, rights pending
+  private_data_dir: private_data
+  source_manifest: data/source_manifest.json
+splits:
+  group_by: source_conversation_id
+  official_test_locked: true
+  prohibit_cross_split_variants: true
+pilot:
+  target_anchors: 50
+  edits_per_anchor: 2
+  ratings_per_condition: 3
+  intended_families: [fiction_frame, boundary, vulnerability, irrelevant_distractor, evidence_distance]
+full:
+  proposed_anchors: 300
+  edits_per_anchor: 2
+  ratings_per_condition: 3
+  requires_pilot_power_review: true
+models:
+  - name: tfidf_logreg
+    train_seed: 42
+  - name: compact_transformer
+    checkpoint: null
+    seeds: [11, 23, 42, 73, 101]
+conditions: [target, previous_1, previous_3, full_context, shuffled_order, mismatched_length, neutral_padding, user_only, ai_only]
+metrics:
+  primary: [ufr, ccar]
+  secondary: [paired_joint_accuracy, macro_f1, harmful_recall, safe_fpr]
+  bootstrap_clusters: source_conversation_id
+  bootstrap_reps: 2000
+  ci: 0.95
+  multiple_tests: holm
+privacy:
+  allow_external_raw_text_transfer: false
+  allow_raw_text_public_export: false
+  approved_human_annotation: false
+  release_requires_human_review: true

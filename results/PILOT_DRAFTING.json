@@ -1,0 +1,21 @@
+{
+  "model": "mlx-community/Qwen3-1.7B-4bit",
+  "revision": "3b1b1768f8f8cf8351c712464f906e86c2b8269e",
+  "seed": 42,
+  "max_tokens": 256,
+  "weights_sha256": "0e86d9677e519323849eac1bc272caae88567a481ff188c431f70be543d9995f",
+  "queue_sha256": "0203ef7ba6f1b278ed79197fb54dde224ed034255139b814a42a0c1565f08b4b",
+  "source_sha256": "675bf74237bb32219fdf2b685a510c65d78e29dcde5dceb8e0c9ef8a0c8ba78c",
+  "mlx_lm_version": "0.32.2",
+  "sources_processed": 50,
+  "source_status_counts": {
+    "no_usable_draft": 41,
+    "invalid_model_output": 8,
+    "needs_author_review": 1
+  },
+  "proposed_edit_slots": 1,
+  "human_approved_edits": 0,
+  "human_ratings": 0,
+  "session_seconds": 88.14532733382657,
+  "limitation": "Model outputs passed only structural checks. Each draft needs author and independent reviewer assessment."
+}

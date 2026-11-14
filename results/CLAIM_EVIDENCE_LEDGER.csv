@@ -1,0 +1,12 @@
+claim_id,claim_text,claim_type,source_or_run_id,artifact_path,verified_by,verification_date,status
+A01,"The pinned release has 7016 annotated replies across 2111 distinct conversation IDs.",local audit,ed96c1c15818b2a2663192b4ac9655ae5e915d05,results/COMPANIONHARM_AUDIT.json,lead,2026-11-12,verified
+A02,"Conversation and utterance ID intersections are zero across all official split pairs.",local audit,ed96c1c15818b2a2663192b4ac9655ae5e915d05,results/COMPANIONHARM_AUDIT.json,lead,2026-11-12,verified
+A03,"Train and test share four exact normalized traces and two nonexact candidate pairs at the specified similarity threshold.",local audit,ed96c1c15818b2a2663192b4ac9655ae5e915d05,results/COMPANIONHARM_AUDIT.json,lead,2026-11-12,verified as automated matches
+A04,"All released prefixes parsed and were consistent with recorded positions and observed longer traces.",local audit,ed96c1c15818b2a2663192b4ac9655ae5e915d05,results/COMPANIONHARM_AUDIT.json,lead,2026-11-12,verified
+A05,"The proposed exclusions cover nine train, three development, and eight test conversations.",local audit,ed96c1c15818b2a2663192b4ac9655ae5e915d05,results/COMPANIONHARM_AUDIT.json,lead,2026-11-12,verified
+P01,"The proposed label and matched boundary evidence interventions require independent human judgments.",protocol,design draft,protocols/RELATIONAL_EVIDENCE_DESIGN.md,lead,2026-11-12,proposed
+P02,"Human validation yield and confirmatory paired detector performance are pending.",study status,unrun,results/STATUS.md,lead,2026-11-13,pending
+D01,"The filtered lexical development audit trained on 4185 replies and evaluated on 1393 replies from 420 conversations.",development run,context-audit-dev-20261112T182849010856Z,results/CONTEXT_AUDIT_DEV.json,lead,2026-11-13,verified
+D02,"Reply-only macro-F1 was 0.610 and full-prefix macro-F1 was 0.614. The paired 95% interval for the difference was [-0.030, 0.038].",development run,context-audit-dev-20261112T182849010856Z,results/CONTEXT_AUDIT_DEV.json,lead,2026-11-13,verified exploratory
+D03,"Altered prefix probes changed predictions under the fixed full-prefix fit. Their expected gold relations remain unvalidated.",development run,context-audit-dev-20261112T182849010856Z,results/CONTEXT_AUDIT_DEV.json,lead,2026-11-13,verified exploratory
+P03,"The development queue contains 50 source conversations and 100 edit slots.",pilot preparation,seed 42,results/PILOT_QUEUE.json,lead,2026-11-13,verified

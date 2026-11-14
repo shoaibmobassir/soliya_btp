@@ -1,0 +1,32 @@
+# Stage 0 rights ledger — 2026-11-12
+
+**CompanionHarm local research use confirmed by the project owner on 2026-11-12.** We used that confirmation for the pinned local data audit. The following asset review records upstream terms and the scope of separate activities. Human review is governed by G2. Source identities, revision and hashes are in [the source manifest](../data/source_manifest.json).
+
+| Asset | Verified statement | Project disposition |
+| --- | --- | --- |
+| CompanionHarm code | Pinned README declares MIT for associated code. The pinned Git tree has no standalone LICENSE file. | Use of code in isolation can be evaluated against the declared grant and its notice requirements. Check mixed-content files separately. The verifier was read statically. [Pinned licensing section](https://github.com/HanMeng2004/CompanionHarm/blob/ed96c1c15818b2a2663192b4ac9655ae5e915d05/README.md#licensing-and-terms-of-use) |
+| CompanionHarm research-created materials | Pinned README declares CC BY 4.0 for annotations, coding schemes, prompts and evaluation materials created by the research team. | Verify each component and retain attribution. Treat embedded dialogue as a separately governed component. [Pinned licensing section](https://github.com/HanMeng2004/CompanionHarm/blob/ed96c1c15818b2a2663192b4ac9655ae5e915d05/README.md#licensing-and-terms-of-use), [CC BY 4.0 terms](https://creativecommons.org/licenses/by/4.0/) |
+| CompanionHarm raw context and target | README designates research-only use and prohibits redistribution, identification, contact and re-identification. Third-party content stays subject to source rights and terms. Data card warns of residual names and other identifiers. | Offline research is the stated intended use. Document the project's permitted access route and scope for copying, editing, training, blinded rater access and retention before processing. Keep external transfer disabled and raw or real-text-derived material private. [Pinned licensing section](https://github.com/HanMeng2004/CompanionHarm/blob/ed96c1c15818b2a2663192b4ac9655ae5e915d05/README.md#licensing-and-terms-of-use), [Pinned data card](https://github.com/HanMeng2004/CompanionHarm/blob/ed96c1c15818b2a2663192b4ac9655ae5e915d05/DATA_CARD.md) |
+| CompanionHarm underlying collection | Paper describes a subsample of an earlier r/replika screenshot collection with OCR and reconstruction. The earlier CHI paper §3.1 reports approval for its own work. The CompanionHarm preprint has a separate article license. | Obtain a recorded determination for archived screenshot/transcript rights, local secondary use and controlled reviewer access. The earlier study approval is evidence about its own collection. [CompanionHarm, Data Collection](https://arxiv.org/html/2608.25377), [Zhang et al., §3.1](https://arxiv.org/pdf/2410.20130#page=7) |
+| AICompanionBench corpus and code | The pinned tree and README list the CSV and contain no verified dataset or code grant. The preprint's CC BY 4.0 is an article license. The current CSV and paper-linked XLSX have unresolved version equivalence. | Exclude this corpus from current acquisition and evaluation. An external analysis needs a version-specific grant, authorized data scope and a documented source chain. [Pinned repository](https://github.com/anonymousresearcher2026/AICompanionBench/tree/4dbc9ec2b3027a0049094eb3cfda82390bcf1c74), [Article](https://arxiv.org/html/2606.04867) |
+| Reddit and Replika | Reddit User Agreement §5 covers retention of user rights and license to Reddit. The Public Content Policy and Researchers Program describe research access and deletion conditions. Replika's current Terms §§6.3, 8.1 and 8.3 describe service-use limits, extraction and the license running to Replika. | Document which current and historical terms apply to the precise reuse path. Record how an authorized steward can honor deletions through internal identifiers, with no account linkage or contact. [Reddit User Agreement](https://redditinc.com/policies/user-agreement), [Public Content Policy](https://support.reddithelp.com/hc/en-us/articles/26410290525844-Public-Content-Policy), [Researchers Program](https://support.reddithelp.com/hc/en-us/articles/49381918834964-Reddit-for-Researchers-Program), [Replika terms](https://replika.com/legal/terms/en) |
+| Local notebook, checkpoints and exports | Notebook has a local content hash. Authorship, reuse terms, training lineage and output locations remain unknown. | Treat as a local reference until ownership, input versions, model license, code changes and prior test exposure are documented. Checkpoint release requires a separate review of training rights and disclosure. [Input inventory](INPUT_INVENTORY.md) |
+
+## Evidence required to close the rights audit
+
+Record the institution's determination and exact release revision. Obtain upstream clarification where terms leave project uses unresolved. Cover access, private copying, editing, training, blinded raters, retention, deletion and each release category. Keep authorization records with the responsible steward. G2 separately requires the approved annotation and rater safety plan. No correspondence was sent in Stage 0.
+
+Any approved real-data work should use encrypted, access-controlled storage and an offline working copy. Keep raw text, real derivatives, evidence spans, source identifiers, raw target/context hashes and similarity signatures private. Paper examples should use independently authored synthetic text. Review small cells, linkable predictions and checkpoint disclosure before release. An external API, hosted notebook, or external annotation service would require explicit rights and ethics approval specific to that transfer.
+
+## Authorization intake template
+
+Complete one record per corpus and exact revision in the institutional workspace. Record the decision reference here after review. Keep the authorization document, contacts and personal data in approved storage.
+
+| Field | Entry |
+| --- | --- |
+| Corpus and immutable release revision | Pending |
+| Institutional determination reference, date and responsible steward | Pending |
+| Applicable release terms, historical source terms and upstream clarification reference | Pending |
+| Approved activities and responsible roles | Pending for local inspection, copying, editing, training and blinded rating |
+| Storage boundary, retention, deletion and withdrawal process | Pending |
+| External transfer and approved release components | Pending; project config prohibits raw transfer and raw release |

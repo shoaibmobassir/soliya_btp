@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "access_date": "2026-11-12",
+  "audit_scope": "Pinned public repository metadata and locally authorized CompanionHarm split integrity audit. AICompanionBench remains metadata-only.",
+  "sources": [
+    {
+      "id": "companionharm",
+      "repository": "https://github.com/HanMeng2004/CompanionHarm",
+      "paper": "https://arxiv.org/abs/2608.25377v1",
+      "revision": "ed96c1c15818b2a2663192b4ac9655ae5e915d05",
+      "tree_endpoint": "https://api.github.com/repos/HanMeng2004/CompanionHarm/git/trees/ed96c1c15818b2a2663192b4ac9655ae5e915d05?recursive=1",
+      "local_status": "verified_in_private_storage",
+      "rights_status": "Project owner confirmed local research use on 2026-11-12. Cloud transfer and new human review are outside this confirmation.",
+      "documentation": [
+        {
+          "path": "README.md",
+          "sha256": "738706b01dbc95af2181e76e8b090207c4a5f20485728128dd3119bdc65f1cf1"
+        },
+        {
+          "path": "DATA_CARD.md",
+          "sha256": "957a6f19b96eeca18f6c87eaa8268223e0b97d3caa505cad8aa7823cfd21a2ca"
+        },
+        {
+          "path": "scripts/verify_artifact.py",
+          "sha256": "a4994baca862725a28f2d34f1490c1ec74d3f3e8f3c91da9f514b23153ca8056"
+        }
+      ],
+      "data_objects": [
+        {
+          "path": "data/splits/train.csv",
+          "git_blob_oid": "ae73aadc4f8dab020b8dcc3b53589c5ab69650af",
+          "reported_bytes": 1241307,
+          "reported_rows": 4222,
+          "reported_conversations": 1268,
+          "raw_bytes_sha256": "9513b9ee9b7d2d2071e7e5ca22384f8abc37b761f08a961606d74a6056d16196",
+          "observed_rows": 4222,
+          "observed_conversations": 1268
+        },
+        {
+          "path": "data/splits/dev.csv",
+          "git_blob_oid": "b49a8129e4ee15a1bad3ec5c93cedb0e1ebef0e6",
+          "reported_bytes": 417904,
+          "reported_rows": 1403,
+          "reported_conversations": 423,
+          "raw_bytes_sha256": "819e75702bb3bc514f263899ff43a824c1f1f264a1f884196d6730d6deef19e3",
+          "observed_rows": 1403,
+          "observed_conversations": 423
+        },
+        {
+          "path": "data/splits/test.csv",
+          "git_blob_oid": "52458b82e4dc878c1fd71ed080199cc28b021e60",
+          "reported_bytes": 411085,
+          "reported_rows": 1391,
+          "reported_conversations": 420,
+          "raw_bytes_sha256": "1d24148c00a768e9dea325d0bfe267fda6d146c925eeaa9f88ed3268f9f80310",
+          "observed_rows": 1391,
+          "observed_conversations": 420
+        }
+      ]
+    },
+    {
+      "id": "aicompanionbench",
+      "repository": "https://github.com/anonymousresearcher2026/AICompanionBench",
+      "paper": "https://arxiv.org/abs/2606.04867v1",
+      "revision": "4dbc9ec2b3027a0049094eb3cfda82390bcf1c74",
+      "tree_endpoint": "https://api.github.com/repos/anonymousresearcher2026/AICompanionBench/git/trees/4dbc9ec2b3027a0049094eb3cfda82390bcf1c74?recursive=1",
+      "local_status": "missing",
+      "rights_status": "no verified dataset license; acquisition blocked",
+      "documentation": [
+        {
+          "path": "README.md",
+          "sha256": "9855b446a1b0cb63b190307f2762505253ad7e85270746a34740b979e237a917"
+        }
+      ],
+      "data_objects": [
+        {
+          "path": "AICompanionBench.csv",
+          "git_blob_oid": "d643587177f6f314d50f503a04d0a126cdffb681",
+          "reported_bytes": 6918925,
+          "reported_rows": null,
+          "reported_conversations": 2123,
+          "raw_bytes_sha256": null,
+          "observed_rows": null,
+          "observed_conversations": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\caption{Observed counts for the pinned CompanionHarm splits.}
+\begin{tabular}{lrrr}
+\toprule
+Split & Replies & Conversation IDs & Blank prefixes \\
+\midrule
+Train & 4,222 & 1,268 & 538 \\
+Development & 1,403 & 423 & 167 \\
+Test & 1,391 & 420 & 176 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Cross-split matches after normalization. Trace counts count pairs of conversation IDs. Near traces exclude exact traces.}
+\begin{tabular}{lrrr}
+\toprule
+Split comparison & Context--reply matches & Exact traces & Near traces \\
+\midrule
+Train--development & 6 & 2 & 0 \\
+Train--test & 18 & 4 & 2 \\
+Development--test & 2 & 1 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}

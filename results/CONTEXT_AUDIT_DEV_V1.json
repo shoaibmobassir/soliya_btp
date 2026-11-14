@@ -1,0 +1,241 @@
+{
+  "natural_input_metrics": {
+    "target_model": {
+      "confusion_tn_fp_fn_tp": [
+        677,
+        293,
+        194,
+        229
+      ],
+      "macro_f1": {
+        "estimate": 0.6100629689983302,
+        "interval": [
+          0.5813680183719521,
+          0.6375285002604818
+        ],
+        "defined_bootstrap_draws": 2000
+      },
+      "harmful_recall": {
+        "estimate": 0.541371158392435,
+        "interval": [
+          0.4922544844142234,
+          0.5887651384674266
+        ],
+        "defined_bootstrap_draws": 2000
+      },
+      "safe_fpr": {
+        "estimate": 0.3020618556701031,
+        "interval": [
+          0.27213371501708433,
+          0.33334173387096766
+        ],
+        "defined_bootstrap_draws": 2000
+      }
+    },
+    "full": {
+      "confusion_tn_fp_fn_tp": [
+        648,
+        322,
+        172,
+        251
+      ],
+      "macro_f1": {
+        "estimate": 0.6140192053128717,
+        "interval": [
+          0.5766328422923661,
+          0.6495785862071605
+        ],
+        "defined_bootstrap_draws": 2000
+      },
+      "harmful_recall": {
+        "estimate": 0.5933806146572104,
+        "interval": [
+          0.5303428596839703,
+          0.6492226651480637
+        ],
+        "defined_bootstrap_draws": 2000
+      },
+      "safe_fpr": {
+        "estimate": 0.3319587628865979,
+        "interval": [
+          0.2854064218253929,
+          0.37863070539419086
+        ],
+        "defined_bootstrap_draws": 2000
+      }
+    }
+  },
+  "full_minus_target": {
+    "macro_f1": {
+      "estimate": 0.00395623631454145,
+      "interval": [
+        -0.029794638031812704,
+        0.037956098886013125
+      ],
+      "defined_bootstrap_draws": 2000
+    },
+    "harmful_recall": {
+      "estimate": 0.05200945626477538,
+      "interval": [
+        -0.009554181313707241,
+        0.11005400365887981
+      ],
+      "defined_bootstrap_draws": 2000
+    },
+    "safe_fpr": {
+      "estimate": 0.02989690721649485,
+      "interval": [
+        -0.01715036476160842,
+        0.07785265721120982
+      ],
+      "defined_bootstrap_draws": 2000
+    }
+  },
+  "unvalidated_probe_flip_rates": {
+    "removed": {
+      "rows": 1228,
+      "flips": 489,
+      "estimate": 0.3982084690553746,
+      "interval": [
+        0.35816346596062015,
+        0.43957495598199664
+      ],
+      "defined_bootstrap_draws": 2000
+    },
+    "last_user": {
+      "rows": 1228,
+      "flips": 371,
+      "estimate": 0.30211726384364823,
+      "interval": [
+        0.2660508269154061,
+        0.3389840843323687
+      ],
+      "defined_bootstrap_draws": 2000
+    },
+    "last_three": {
+      "rows": 1228,
+      "flips": 183,
+      "estimate": 0.1490228013029316,
+      "interval": [
+        0.12050982800982801,
+        0.17961470241856722
+      ],
+      "defined_bootstrap_draws": 2000
+    },
+    "user_only": {
+      "rows": 1228,
+      "flips": 152,
+      "estimate": 0.1237785016286645,
+      "interval": [
+        0.10185896434385128,
+        0.14658920152614865
+      ],
+      "defined_bootstrap_draws": 2000
+    },
+    "prior_ai_only": {
+      "rows": 1228,
+      "flips": 332,
+      "estimate": 0.2703583061889251,
+      "interval": [
+        0.23443200384703494,
+        0.3088834423367554
+      ],
+      "defined_bootstrap_draws": 2000
+    },
+    "shuffled": {
+      "rows": 1228,
+      "flips": 45,
+      "estimate": 0.03664495114006515,
+      "interval": [
+        0.025662235059507054,
+        0.048097034605453726
+      ],
+      "defined_bootstrap_draws": 2000
+    },
+    "neutral_padding": {
+      "rows": 1228,
+      "flips": 457,
+      "estimate": 0.3721498371335505,
+      "interval": [
+        0.33248884713431787,
+        0.41321224500823034
+      ],
+      "defined_bootstrap_draws": 2000
+    },
+    "mismatched_length": {
+      "rows": 1227,
+      "flips": 421,
+      "estimate": 0.34311328443357786,
+      "interval": [
+        0.3151456677771759,
+        0.37260510874246333
+      ],
+      "defined_bootstrap_draws": 2000
+    }
+  },
+  "run_id": "context-audit-dev-20261112T182454915099Z",
+  "timestamp": "2026-11-12T18:24:54.915099+00:00",
+  "runtime_seconds": 0.6605465831235051,
+  "config": {
+    "seed": 42,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "class_weight": "balanced",
+    "solver": "liblinear",
+    "regularization_c": 1.0,
+    "decision_threshold": 0.5,
+    "bootstrap_reps": 2000,
+    "confidence_level": 0.95,
+    "neutral_padding": "The notebook is on the table. The lamp is beside the window.",
+    "training_split": "train",
+    "evaluation_split": "dev"
+  },
+  "provenance": {
+    "source_revision": "ed96c1c15818b2a2663192b4ac9655ae5e915d05",
+    "split_sha256": {
+      "train": "9513b9ee9b7d2d2071e7e5ca22384f8abc37b761f08a961606d74a6056d16196",
+      "dev": "819e75702bb3bc514f263899ff43a824c1f1f264a1f884196d6730d6deef19e3"
+    },
+    "exclusions_sha256": "6911d56ada818bc48eb0fba8adfe73855b85d6e367d914660b614901258fb2a4"
+  },
+  "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+  "python": "3.13.12",
+  "dependencies": {
+    "scikit-learn": "1.7.2",
+    "numpy": "2.2.6",
+    "scipy": "1.16.3",
+    "joblib": "1.5.2",
+    "threadpoolctl": "3.6.0"
+  },
+  "code_sha256": {
+    "scripts/run_context_audit.py": "3b3f2138fb5675d09e9e881ce5d552ae938511d53221443a9e167cff1c7d7b25",
+    "scripts/development_data.py": "20a6ee6a4ec81282ef1e9e2154f4fa2809edddfee58a4849f7cabf60d2c3200a",
+    "scripts/audit_companionharm.py": "5f27a93b78cc6476434edc6e3b554ef7390bf7693cb6757b09f0eadf88d8bf58",
+    "scripts/audit_conversation_overlap.py": "56f293ef47e01e04040577028c70038eff8f31bf87b1f96580c93935ff0fa563"
+  },
+  "model_sha256": {
+    "target": "ae45203feba682a63fc886a076f44fc1e17458be5dabceaddba3d77554ea970e",
+    "full": "725c9ccfdbe8c14195e942b9b936869603c53f85023fa97cbbb5a1ac55603a86"
+  },
+  "prediction_sha256": "fda406fb297fb3c893746a11bcd08ae8185bbb173b843074cdb61942a605aa81",
+  "split_counts": {
+    "train": {
+      "rows": 4185,
+      "conversations": 1259
+    },
+    "dev": {
+      "rows": 1393,
+      "conversations": 420
+    }
+  },
+  "limitations": [
+    "Exploratory development analysis using the existing corpus harm labels.",
+    "Natural-input model comparisons use separate fits. Altered inputs use the fixed full model.",
+    "Probe rates measure disagreement with full input and have no human-validated relation.",
+    "Token-length controls use whitespace words and do not match model-token lengths.",
+    "Inference cost was not measured separately."
+  ]
+}

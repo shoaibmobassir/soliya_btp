@@ -1,0 +1,9 @@
+# Stage 2 — baseline replication and context controls
+
+1. Locate and adapt existing target-only, context+target, and context-only pipelines. Never overwrite upstream artifacts. Log original test reference from user report as *externally supplied, not reproduced*: A harmful recall 54.3%, safe FPR 27.9%, macro-F1 .624; B 59.5%, 34.5%, .607; C 59.5%, 37.1%, .591, at .5 threshold. Verify exact source/version before claiming reproduction.
+2. Baselines: word unigram/bigram TF-IDF + balanced logistic regression; compact transformer (DistilBERT/MiniLM or existing checkpoint), optionally one permissibly hosted/open-weight instruction-tuned judge. Five independent seeds only for stochastic training; deterministic TF-IDF doesn't need artificially diverse seeds.
+3. Compare: target-only, last 1 turn, last 3 turns, all preceding turns, context-only, order shuffle, role-specific context, neutral padding, length-matched mismatched context. Explicitly distinguish `semantic validity unknown` probes from human validated label-preserving probes.
+4. Match training data and hyperparameter search budgets. Vectorizers fit train only. Model selection, calibration, thresholds on development only; test only after locked protocol. No per-test-slice threshold shopping.
+5. Report AUROC/AUPRC where well-defined, macro-F1, class-specific precision/recall, harmful recall, safe FPR, confusion matrices, calibration if meaningful, latency and token costs. For contexts with different gold validity, report flip diagnostics rather than falsely calibrated classification metrics.
+6. All runs emit prediction-level safe IDs with paired alignment; use conversation-cluster intervals and analyze by context length, agreement, original class and edit family.
+7. Use cheap synthetic fixtures to test batching, tokenization/truncation, deterministic perturbations and role parsing before any costly training.

@@ -1,0 +1,14 @@
+{
+  "seed": 42,
+  "ngram_range": [1, 2],
+  "min_df": 2,
+  "class_weight": "balanced",
+  "solver": "liblinear",
+  "regularization_c": 1.0,
+  "decision_threshold": 0.5,
+  "bootstrap_reps": 2000,
+  "confidence_level": 0.95,
+  "neutral_padding": "The notebook is on the table. The lamp is beside the window.",
+  "training_split": "train",
+  "evaluation_split": "dev"
+}

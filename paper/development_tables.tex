@@ -1,0 +1,33 @@
+\begin{table}[htbp]
+\centering
+\caption{Exploratory development estimates with conversation-clustered 95\% intervals. Each native input has its own trained model.}
+\begin{tabular}{lrrr}
+\toprule
+Input & Macro-F1 & Harmful recall & Safe FPR \\
+\midrule
+Reply only & 0.610 [0.581, 0.638] & 0.541 [0.492, 0.589] & 0.302 [0.272, 0.333] \\
+Full prefix & 0.614 [0.577, 0.650] & 0.593 [0.530, 0.649] & 0.332 [0.285, 0.379] \\
+Full minus reply & 0.004 [-0.030, 0.038] & 0.052 [-0.010, 0.110] & 0.030 [-0.017, 0.078] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Prediction changes relative to the fixed full-prefix model. Denominators cover available probes with nonempty original prefixes.}
+\begin{tabular}{lrrrr}
+\toprule
+Probe & Rows & Input changed & Flips & Rate [95\% interval] \\
+\midrule
+Remove prefix & 1228 & 1228 & 489 & 0.398 [0.358, 0.440] \\
+Last user turn & 1228 & 1007 & 371 & 0.302 [0.266, 0.339] \\
+Last three turns & 1228 & 678 & 183 & 0.149 [0.121, 0.180] \\
+Shuffle order & 1228 & 883 & 45 & 0.037 [0.026, 0.048] \\
+Length-matched donor & 1227 & 1227 & 421 & 0.343 [0.315, 0.373] \\
+Append neutral padding & 1228 & 1228 & 376 & 0.306 [0.275, 0.337] \\
+Replace with neutral text & 1228 & 1228 & 457 & 0.372 [0.332, 0.413] \\
+User turns only & 1228 & 1007 & 152 & 0.124 [0.102, 0.147] \\
+Earlier AI turns only & 1228 & 1228 & 332 & 0.270 [0.234, 0.309] \\
+\bottomrule
+\end{tabular}
+\end{table}
